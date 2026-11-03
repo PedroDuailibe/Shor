@@ -1,0 +1,87 @@
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evanptgs}
+\usepackage{braket}
+\numberwithin{example}{section}
+
+\begin{document}
+
+\title{Algoritmo de Shor: Criptografia Quântica}
+\author{Marcos Burdzinski, Pedro Duailibe}
+\date{}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introdução e Notação}
+
+\subsection{Estados quânticos e medições}
+
+Aqui utilizaremos a notação \textbf{bra-ket} (muito utilizada por físicos), onde um vetor é denotado por $\ket \bullet$, onde $\bullet$ é um nome de variável. 
+
+\begin{example}
+   Se $H$ é um espaço de Hilbert, com $\dim H = n < \infty$, os elementos base de $H$ são comumente definidos como
+   \begin{align*}
+     \ket 0, \ket 1, \dots , \ket {n-1}
+   \end{align*}
+   (em vez de $e_i$) e um elemento qualquer de $H$ é denotado por 
+   \begin{align*}
+       \ket \psi, \ket \phi, \dots
+   \end{align*}
+   
+\end{example}
+
+Para qualquer $\ket \psi \in H$, existe o seu dual canônico em $H ^\vee$, que denotamos por $\bra \psi$.
+
+\begin{example}
+   Se $\dim H = 2$, temos $\ket \phi = \begin{bmatrix} \alpha \\ \beta \end{bmatrix}$ em uma base ortonormal, então $\bra \psi = \begin{bmatrix} \overline \alpha & \overline \beta \end{bmatrix}$.
+
+   Se $\ket \phi = \begin{bmatrix} \gamma \\ \delta \end{bmatrix}$, temos que o produto interno entre $\bra \psi$ e $\ket \phi$ é
+   \begin{align*}
+     \braket{\psi|\phi} = \begin{bmatrix} \overline \alpha & \overline \beta \end{bmatrix} \begin{bmatrix} \gamma \\ \delta \end{bmatrix} = \overline \alpha \gamma + \overline \beta \delta.
+   \end{align*}
+\end{example}
+
+\subsubsection{O Espaço de Estados}
+
+\begin{definition}
+  Dado um espaço de Hilbert $H$ com $\dim H = n$, um \vocab{qubit} é um elemento não zero $\ket \psi \in H$.   
+\end{definition}
+
+Ou seja, se $H = \CC^{\oplus 2}$, um qubit é algo da forma
+\begin{align*}
+    \ket \psi = \alpha \ket 0 + \beta \ket 1,
+\end{align*}
+onde $\alpha$ e $\beta$ não podem ser ambos zero. 
+
+\subsubsection{Observações}
+
+A forma que observações funcionam é estranha e (como não somos físicos) iremos nos restringir somente a descrição matemática dessa \textit{quantum framework}:
+
+\begin{itemize}
+  \ii Escolha um operador Hermitiano $T:H \to H$, que é denotado de \vocab{observável}.
+  \ii Considere os seus autovalores $\lambda_0, \dots, \lambda_{n-1}$, e autovetores correspondentes $\ket 0_T, \dots,$ $\ket {n-1}_T$. Podemos assumir que $\ket 0_T,\dots,\ket{n-1}_T$ formam uma base ortonormal de $H$.
+  \ii Escreva 
+  \begin{align*}
+    \ket \psi = c_0 \ket 0_T + c_1 \ket 1_T + \cdots + c_{n-1}\ket{n-1}_T.
+  \end{align*}
+  \ii Então, a probabilidade de observar $\lambda_i$ é 
+  \begin{align*}
+    \frac {|c_i|^2}{|c_0|^2 + \cdots + |c_{n-1}|^2}.
+  \end{align*}
+  Isso é chamado de fazer uma \vocab{observação sobre} $T$.
+\end{itemize}
+
+\subsubsection{Entreleçamento}
+
+\subsection{Circuitos Quânticos}
+
+\subsubsection{Portas lógicas quânticas}
+
+Em mecânica quântica, como podemos ter \textit{combinações lineares} de elementos base, nossas portas lógicas consistiram de \textit{transformações lineares}. 
+
+\begin{definition}[Porta Lógica quântica]
+    Portas lógicas quânticas são matrizes unitárias. 
+\end{definition}
+
+\end{document}
